@@ -20,7 +20,7 @@ import "./DocuLibrary.sol";
 contract DocuNet {
     address university;
 
-    constructor(address _university) {
+    constructor(address _university) public {
         university = _university;
     }
 
@@ -56,6 +56,7 @@ contract DocuNet {
         newStudent.pass = _pass;
         newStudent.passportHash = _passportHash;
         newStudent.sopHash = _sopHash;
+        newStudent.adder = msg.sender;
         newStudent.status = 0;
         addressLookup[_passport] = msg.sender;
         indexLookup[studentCount] = msg.sender;
@@ -133,7 +134,10 @@ contract DocuNet {
             "No Such Student Exists!"
         );
         address _adder = addressLookup[_passport];
-        require(studentLookup[_adder].status==1,"Application Not Completed Yet!");
+        require(
+            studentLookup[_adder].status == 1,
+            "Application Not Completed Yet!"
+        );
         if (accepted) {
             studentLookup[_adder].status = 3;
         } else {
@@ -249,6 +253,19 @@ contract DocuNet {
             studentLookup[_adder].sopHash
         );
     }
+
+    //Testing methods
+    // function getUniversity() public view returns (address) {
+    //     return university;
+    // }
+
+    // function showSender() public view returns (address) {
+    //     return (msg.sender);
+    // }
+
+    // function showNull() public view returns (address) {
+    //     return verifierLookup[msg.sender].adder;
+    // }
 
     event StudentCreation(string name);
     event VerifierCreation(string name);
