@@ -77,7 +77,23 @@ setTimeout(function delay() {
     //         console.log(response);
     //     }
     // });
-    // DocuNetContract.methods.addStudent("Passport","Name","Email","Password","QmPRELP8RcNTib6k1g7QAfN3gddDiXwT1W9fxWuiLk7svM","QmNnBtoCPzcGPnRdBKkXvy55PjkyzassXUA2yGJrWjhNWr")
+    // DocuNetContract.methods.addStudent("K7072353","Avi Mehta","amehta65@asu.edu","Yeet1234","QmPRELP8RcNTib6k1g7QAfN3gddDiXwT1W9fxWuiLk7svM","QmNnBtoCPzcGPnRdBKkXvy55PjkyzassXUA2yGJrWjhNWr")
+    // .send()
+    // .then(result => {
+    //     if (result.status === true) {
+    //         alert("Success");
+    //         console.log(result);
+    //     }
+    // });
+    // DocuNetContract.methods.addVerifier("ETS")
+    // .send()
+    // .then(result => {
+    //     if (result.status === true) {
+    //         alert("Success");
+    //         console.log(result);
+    //     }
+    // });
+    // DocuNetContract.methods.submitApplication()
     // .send()
     // .then(result => {
     //     if (result.status === true) {

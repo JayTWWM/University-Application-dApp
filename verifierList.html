@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://unpkg.com/ipfs-api@9.0.0/dist/index.js"
+            integrity="sha384-5bXRcW9kyxxnSMbOoHzraqa7Z0PQWIao+cgeg327zit1hz5LZCEbIMx/LWKPReuB"
+            crossorigin="anonymous"></script>
+        <script
+            src="https://cdn.jsdelivr.net/gh/ethereum/web3.js@1.0.0-beta.34/dist/web3.js"
+            charset="utf-8"></script>
+        <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/Faker/3.1.0/faker.js"></script>
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+            <script src="./index.js" type="text/javascript"></script>
+        <style>
+            @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;700&display=swap");
+
+            * {
+                padding: 0;
+                margin: 0;
+                box-sizing: border-box;
+            }
+
+            body {
+                background: #161925;
+                height: 100vh;
+                display: grid;
+                place-items: center;
+                font-family: Montserrat;
+                color: #CBF7ED;
+            }
+
+            .card {
+                padding: 15px;
+                width: 350px;
+                background: #161925;
+                border-radius: 5px;
+                text-align: center;
+                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.7);
+                user-select: none;
+            }
+
+            .cover-photo {
+                position: relative;
+                background: #8EA8C3;
+                background-size: cover;
+                height: 180px;
+                border-radius: 5px 5px 0 0;
+            }
+
+            .profile {
+                position: absolute;
+                width: 120px;
+                bottom: -60px;
+                left: 15px;
+                border-radius: 50%;
+                border: 2px solid #161925;
+                background: #161925;
+                padding: 5px;
+            }
+
+            .profile-name {
+                font-size: 20px;
+                margin: 25px 0 0 120px;
+                color: #fff;
+            }
+
+            .about {
+                margin-top: 30px;
+                line-height: 1.6;
+            }
+
+            .btn {
+                margin: 10px 15px;
+                width: 200px;
+                background: transparent;
+                color: #8EA8C3;
+                padding: 10px 25px;
+                border-radius: 3px;
+                border: 1px solid #8EA8C3;
+                font-weight: bold;
+                font-family: Montserrat;
+                cursor: pointer;
+                transition: 0.2s;
+            }
+
+            .acc {
+                margin: 10px 15px;
+                width: 200px;
+                background: #0f0;
+                color: #000;
+                padding: 10px 25px;
+                border-radius: 3px;
+                border: 1px solid #8EA8C3;
+                font-weight: bold;
+                font-family: Montserrat;
+                cursor: pointer;
+                transition: 0.2s;
+            }
+
+            .rej {
+                margin: 10px 15px;
+                width: 200px;
+                background: #f00;
+                color: #000;
+                padding: 10px 25px;
+                border-radius: 3px;
+                border: 1px solid #8EA8C3;
+                font-weight: bold;
+                font-family: Montserrat;
+                cursor: pointer;
+                transition: 0.2s;
+            }
+
+            /* .btn:last-of-type {
+                background: transparent;
+                border-color: #8EA8C3;
+                color: #8EA8C3;
+            } */
+
+            .btn:hover {
+                background: #8EA8C3;
+                color: #161925;
+            }
+
+            .icons {
+                width: 180px;
+                margin: 0 auto 10px;
+                display: flex;
+                justify-content: space-between;
+                gap: 15px;
+            }
+
+            .icons i {
+                cursor: pointer;
+                padding: 5px;
+                font-size: 18px;
+                transition: 0.2s;
+            }
+
+            .icons i:hover {
+                color: #8EA8C3;
+            }
+        </style>
+        <script src="./src/js/verifier.js"></script>
+    </head>
+    <body>
+        <table>
+            <tr id="tbody">
+            </tr>
+        </table>
+    </body>
+</html>

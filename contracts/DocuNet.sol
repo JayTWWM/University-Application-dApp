@@ -76,12 +76,56 @@ contract DocuNet {
                     abi.encodePacked(
                         (studentLookup[msg.sender].creds[i].hasher)
                     )
-                ) == keccak256(abi.encodePacked(("")))
+                ) ==
+                keccak256(abi.encodePacked((""))) &&
+                verifierLookup[verifierAddressLookup[i]].approved
             ) {
                 return false;
             }
         }
         return true;
+    }
+
+    // Get student credentials
+    function getCredsFromIndex(uint256 _id, string memory _passport)
+        public
+        view
+        returns (string memory, string memory)
+    {
+        require(msg.sender == university, "You Do Not Have Authority!");
+        if (verifierLookup[verifierAddressLookup[_id]].approved) {
+            return (
+                verifierLookup[verifierAddressLookup[_id]].name,
+                studentLookup[addressLookup[_passport]].creds[_id].hasher
+            );
+        }
+        return (
+            verifierLookup[verifierAddressLookup[_id]].name,
+            "Not Required"
+        );
+    }
+
+    // Get student credentials
+    function getCreds(uint256 _id)
+        public
+        view
+        returns (string memory, string memory)
+    {
+        require(
+            studentLookup[msg.sender].adder != address(0) ||
+                msg.sender == university,
+            "You Do Not Have An Account!"
+        );
+        if (verifierLookup[verifierAddressLookup[_id]].approved) {
+            return (
+                verifierLookup[verifierAddressLookup[_id]].name,
+                studentLookup[msg.sender].creds[_id].hasher
+            );
+        }
+        return (
+            verifierLookup[verifierAddressLookup[_id]].name,
+            "Not Required"
+        );
     }
 
     // Submit the application
@@ -126,6 +170,18 @@ contract DocuNet {
         emit VerifierApproved(verifierLookup[_adder].name);
     }
 
+    // Disapprove verifier
+    function disapproveVerifier(uint256 _id) public {
+        require(msg.sender == university, "You Do Not Have Authority!");
+        require(
+            verifierAddressLookup[_id] != address(0),
+            "No Such Verifier Found!"
+        );
+        address _adder = verifierAddressLookup[_id];
+        verifierLookup[_adder].approved = false;
+        emit VerifierApproved(verifierLookup[_adder].name);
+    }
+
     // Reject or accept student
     function giveDecision(string memory _passport, bool accepted) public {
         require(msg.sender == university, "You Do Not Have Authority!");
@@ -135,7 +191,7 @@ contract DocuNet {
         );
         address _adder = addressLookup[_passport];
         require(
-            studentLookup[_adder].status == 1,
+            studentLookup[_adder].status != 0,
             "Application Not Completed Yet!"
         );
         if (accepted) {
@@ -180,7 +236,10 @@ contract DocuNet {
 
     // Get verifier count
     function getVerifierCount() public view returns (uint256) {
-        require(msg.sender == university, "You Do Not Have Authority!");
+        require(
+            verifierLookup[msg.sender].adder == address(0),
+            "You Do Not Have Authority!"
+        );
         return numVerifiers;
     }
 
@@ -251,6 +310,33 @@ contract DocuNet {
             studentLookup[_adder].status,
             studentLookup[_adder].passportHash,
             studentLookup[_adder].sopHash
+        );
+    }
+
+    // Get student from passport
+    function getStudentInfo()
+        public
+        view
+        returns (
+            string memory,
+            string memory,
+            string memory,
+            uint256,
+            string memory,
+            string memory
+        )
+    {
+        require(
+            studentLookup[msg.sender].adder != address(0),
+            "You Do Not Have An Account!"
+        );
+        return (
+            studentLookup[msg.sender].passport,
+            studentLookup[msg.sender].name,
+            studentLookup[msg.sender].email,
+            studentLookup[msg.sender].status,
+            studentLookup[msg.sender].passportHash,
+            studentLookup[msg.sender].sopHash
         );
     }
 
