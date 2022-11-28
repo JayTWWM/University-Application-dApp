@@ -65,12 +65,21 @@ contract DocuNet {
     }
 
     // Verify Student Login
-    function studentLogin(string memory _email, string memory _pass) public view returns (bool) {
+    function studentLogin(string memory _email, string memory _pass)
+        public
+        view
+        returns (bool)
+    {
         require(
             studentLookup[msg.sender].adder != address(0),
             "You Do Not Have An Account!"
         );
-        if(keccak256(abi.encodePacked((studentLookup[msg.sender].email))) == keccak256(abi.encodePacked((_email))) && keccak256(abi.encodePacked((studentLookup[msg.sender].pass))) == keccak256(abi.encodePacked((_pass)))) {
+        if (
+            keccak256(abi.encodePacked((studentLookup[msg.sender].email))) ==
+            keccak256(abi.encodePacked((_email))) &&
+            keccak256(abi.encodePacked((studentLookup[msg.sender].pass))) ==
+            keccak256(abi.encodePacked((_pass)))
+        ) {
             return true;
         }
         return false;
@@ -219,7 +228,8 @@ contract DocuNet {
         public
     {
         require(
-            verifierLookup[msg.sender].adder != address(0),
+            verifierLookup[msg.sender].adder != address(0) ||
+                verifierLookup[msg.sender].approved,
             "You Do Not Have Authority!"
         );
         require(

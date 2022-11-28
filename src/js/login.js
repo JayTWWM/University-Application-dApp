@@ -8,7 +8,7 @@ function myFunction() {
                     console.log(error);
                 } else {
                     console.log(response);
-                    if(response[0]) {
+                    if(response) {
                         window.location.href = "./studentHome.html";
                     } else {
                         alert("Please check your email and password again!");
