@@ -36,6 +36,10 @@ setTimeout(function () {
                 console.log(error);
             } else {
                 console.log(response);
+                if(response[3]==0){
+                    let sub = '<button onclick="submitFunc()" class="btn"> Submit </button>';
+                    $("body").append(sub);
+                }
                 row = '<td><div class="card"> <div class="cover-photo"><img src="https://studentleadership.seattlecentral.edu/sites/icon-library/default-team-member.jpg" class="profile"> </div> <h3 class="profile-name">' + response[1] + '</h3> <p class="about">' + response[2] + '<br>' + kr[response[3]] + '</p> <a href="https://ipfs.io/ipfs/' + response[4] + '"><button class="btn">Passport</button></a> <a href="https://ipfs.io/ipfs/' + response[5] + '"><button class="btn">SOP</button></a> <h3 class="profile-name"> Credentials </h3>';
                 for (let j = 0; j < verifierCount; j++) {
                     DocuNetContract.methods.getCreds(j)
@@ -66,6 +70,4 @@ setTimeout(function () {
                 }
             }
         });
-    let sub = '<button onclick="submitFunc()" class="btn"> Submit </button>';
-    $("body").append(sub);
 }, 8000)
