@@ -19,7 +19,7 @@ function assignVariable(data) {
 
 web3 = new Web3(new Web3.providers.HttpProvider("http://127.0.0.1:7545"));
 web3.eth.getAccounts().then(function (result) {
-    account0 = result[0];
+    account0 = result[2];
     console.log(result);
 });
 

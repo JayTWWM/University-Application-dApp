@@ -174,6 +174,7 @@ contract DocuNet {
         newVerifier.name = _name;
         newVerifier.adder = msg.sender;
         newVerifier.approved = false;
+        newVerifier.id = numVerifiers;
         verifierAddressLookup[numVerifiers] = msg.sender;
         numVerifiers++;
         emit VerifierCreation(_name);
@@ -228,7 +229,7 @@ contract DocuNet {
         public
     {
         require(
-            verifierLookup[msg.sender].adder != address(0) ||
+            verifierLookup[msg.sender].adder != address(0) &&
                 verifierLookup[msg.sender].approved,
             "You Do Not Have Authority!"
         );
@@ -247,7 +248,7 @@ contract DocuNet {
             description: _id,
             owner: _adder
         });
-        emit CredentialsUpdated(_passport);
+        emit CredentialsUpdated(_passport,_id);
     }
 
     // Get student count
@@ -378,7 +379,7 @@ contract DocuNet {
     event StudentCreation(string name);
     event VerifierCreation(string name);
     event VerifierApproved(string name);
-    event CredentialsUpdated(string passport);
+    event CredentialsUpdated(string passport, uint256 id);
     event ApplicationSubmitted(string name);
     event DecisionMade(string name);
 }
