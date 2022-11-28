@@ -24,13 +24,13 @@
     "truffle-contract": "^4.0.2"
   },
   "dependencies": {
-    "@truffle/hdwallet-provider": "^2.1.0",
+    "@truffle/hdwallet-provider": "^2.0.15",
     "body-parser": "^1.19.0",
     "clientside-require": "^4.7.2",
     "ejs": "^3.0.1",
     "express": "^4.17.1",
     "express-fileupload": "^1.1.6",
-    "ipfs-api": "^19.0.0",
+    "ipfs-api": "^17.5.0",
     "ipfs-http-client": "^42.0.0",
     "jquery": "^3.4.1"
   }
