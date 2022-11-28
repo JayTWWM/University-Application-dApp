@@ -64,6 +64,18 @@ contract DocuNet {
         emit StudentCreation(_name);
     }
 
+    // Verify Student Login
+    function studentLogin(string memory _email, string memory _pass) public view returns (bool) {
+        require(
+            studentLookup[msg.sender].adder != address(0),
+            "You Do Not Have An Account!"
+        );
+        if(keccak256(abi.encodePacked((studentLookup[msg.sender].email))) == keccak256(abi.encodePacked((_email))) && keccak256(abi.encodePacked((studentLookup[msg.sender].pass))) == keccak256(abi.encodePacked((_pass)))) {
+            return true;
+        }
+        return false;
+    }
+
     // Check if application is complete
     function checkApplication() internal view returns (bool) {
         require(
