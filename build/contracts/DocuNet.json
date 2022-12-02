@@ -30985,12 +30985,12 @@
     "5777": {
       "events": {},
       "links": {},
-      "address": "0x27F4d31A954ab4ddaD0116AeF84Bff0670682692",
-      "transactionHash": "0xbbe10c58ae3dffe95d1dea82f9862503ad2a979ede3c5021fa84220d99aab21b"
+      "address": "0x135Af6dD42672356e9A43eA832490313861B1Df7",
+      "transactionHash": "0xce7690021ef3ba95c1a3c34270d454d139c825b584bcc11b8b2bee8f00ff9d84"
     }
   },
   "schemaVersion": "3.4.10",
-  "updatedAt": "2022-11-28T01:40:14.100Z",
+  "updatedAt": "2022-12-02T16:38:04.149Z",
   "networkType": "ethereum",
   "devdoc": {
     "methods": {}
